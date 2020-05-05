@@ -1,0 +1,57 @@
+﻿@using System.Timers
+@using Apricot.Services
+@inject IApricotService ApricotService
+
+<div class="alert alert-secondary mt-4" role="alert">
+    <span class="oi oi-arrow-bottom mr-2" aria-hidden="true"></span>
+    <strong>@Title</strong>
+
+    <div>
+        Do you like apricots?
+        If you do, this website will help you learn a bit about these delicious fruits.
+        @Data
+    </div>
+    @if (Apricots != null)
+    {
+        <ul>
+            @foreach (var apricot in Apricots)
+            {
+                <li>@apricot.Name of family @apricot.Family</li>
+            }
+        </ul>
+    }
+</div>
+
+@code {
+    [Parameter]
+    public string Title { get; set; }
+    private IEnumerable<Apricot> Apricots { get; set; }
+    public DateTime Latest { get; set; }
+    private Timer timer;
+    private int data = 0;
+    public int Data
+    {
+        get => data;
+        set
+        {
+            data = value;
+            this.StateHasChanged();
+        }
+    }
+
+    protected async override Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (!firstRender)
+            return;
+        Apricots = ApricotService.GetApricots();
+        timer = new Timer(2000);
+        timer.Elapsed += Elapsed;
+        timer.Start();
+        await base.OnAfterRenderAsync(firstRender);
+    }
+
+    private void Elapsed(object sender, ElapsedEventArgs e)
+    {
+        Data += 10;
+    }
+}
