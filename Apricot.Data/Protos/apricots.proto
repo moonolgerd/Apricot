@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+option csharp_namespace = "Apricot.Data";
+
+package apricots;
+
+// The greeting service definition.
+service ApricotService {
+  // Sends a greeting
+  rpc GetApricots (ApricotRequest) returns (ApricotReply);
+}
+
+// The request message containing the user's name.
+message ApricotRequest {
+  string name = 1;
+}
+
+// The response message containing the greetings.
+message ApricotReply {
+  repeated Apricot apricots = 1;
+}
+
+message Apricot {
+	string name = 1;
+	string family = 2;
+}

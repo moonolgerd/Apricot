@@ -7,6 +7,13 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+		<PackageReference Include="Google.Protobuf" Version="3.11.4" />
+		<PackageReference Include="Grpc.Net.Client" Version="2.28.0" />
+		<PackageReference Include="Grpc.Net.Client.Web" Version="2.28.0-pre2" />
+		<PackageReference Include="Grpc.Tools" Version="2.28.1">
+		  <PrivateAssets>all</PrivateAssets>
+		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
 		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="3.2.0-rc1.20223.4" />
 		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Build" Version="3.2.0-rc1.20223.4" PrivateAssets="all" />
 		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="3.2.0-rc1.20223.4" PrivateAssets="all" />
@@ -15,5 +22,15 @@
 
 	<ItemGroup>
 		<ServiceWorker Include="wwwroot\service-worker.js" PublishedContent="wwwroot\service-worker.published.js" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Protos\" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Protobuf Include="..\Apricot.Data\Protos\apricots.proto" GrpcServices="Client">
+	    <Link>Protos\apricots.proto</Link>
+	  </Protobuf>
 	</ItemGroup>
 </Project>

@@ -25,7 +25,7 @@
 @code {
     [Parameter]
     public string Title { get; set; }
-    private IEnumerable<Apricot> Apricots { get; set; }
+    private IEnumerable<Data.Apricot> Apricots { get; set; }
     public DateTime Latest { get; set; }
     private Timer timer;
     private int data = 0;
@@ -43,7 +43,7 @@
     {
         if (!firstRender)
             return;
-        Apricots = ApricotService.GetApricots();
+        Apricots = await ApricotService.GetApricots();
         timer = new Timer(2000);
         timer.Elapsed += Elapsed;
         timer.Start();
