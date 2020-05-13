@@ -1,1 +1,1 @@
-# Apricot - Blazor WebAssembly PWA
+# Apricot - Blazor WebAssembly GRPC PWA
