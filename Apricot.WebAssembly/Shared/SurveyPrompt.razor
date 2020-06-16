@@ -1,9 +1,9 @@
 ﻿@using System.Timers
 @using Apricot.Services
 @inject IApricotService ApricotService
-@inject IToastService toastService
+@inject IToastService ToastService
 
-<div class="alert alert-secondary mt-4" role="alert">
+<div class="alert alert-primary mt-4" role="alert">
     <span class="oi oi-arrow-top mr-2" aria-hidden="true"></span>
     <strong>@Title</strong>
 
@@ -22,27 +22,29 @@
         </ul>
     }
     <div>@Latest</div>
-    <button class="btn btn-info" @onclick="@(() => toastService.ShowInfo("I'm an INFO message"))">Info Toast</button>
+    <button class="btn btn-info" @onclick="@(() => ToastService.ShowInfo("Some info"))">Info Toast</button>
 </div>
 
 @code {
     [Parameter]
+    // ReSharper disable once MemberCanBePrivate.Global
     public string Title { get; set; }
     private IEnumerable<Data.Apricot> Apricots { get; set; }
-    public DateTime Latest { get; set; }
+    private DateTime Latest { get; set; }
     private Timer timer;
     private int data = 0;
-    public int Data
+
+    private int Data
     {
         get => data;
         set
         {
             data = value;
-            this.StateHasChanged();
+            StateHasChanged();
         }
     }
 
-    protected async override Task OnAfterRenderAsync(bool firstRender)
+    protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         if (!firstRender)
             return;

@@ -9,7 +9,7 @@ using static Apricot.Data.ApricotService;
 
 namespace Apricot.Services
 {
-    interface IApricotService
+    public interface IApricotService
     {
         Task<IEnumerable<Data.Apricot>> GetApricots();
     }
