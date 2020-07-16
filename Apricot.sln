@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.30014.187
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Apricot", "Apricot.WebAssembly\Apricot.csproj", "{E1015511-F5CD-44E3-B1DA-72A39698BD80}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Apricot.Data", "Apricot.Data\Apricot.Data.csproj", "{FF1F7B6C-F342-4630-8F81-29E36A1638A4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Apricot.Data", "Apricot.Data\Apricot.Data.csproj", "{FF1F7B6C-F342-4630-8F81-29E36A1638A4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -22,7 +22,7 @@
         </ul>
     }
     <div>@Latest</div>
-    <button class="btn btn-info" @onclick="@(() => ToastService.ShowInfo("Some info"))">Info Toast</button>
+    <button class="btn btn-info" @onclick="OnShowHtml">Info Toast</button>
 </div>
 
 @code {
@@ -52,12 +52,17 @@
         timer = new Timer(2000);
         timer.Elapsed += Elapsed;
         timer.Start();
-        await base.OnAfterRenderAsync(firstRender);
     }
 
     private void Elapsed(object sender, ElapsedEventArgs e)
     {
         Data += 10;
         Latest = DateTime.Now;
+    }
+
+    private void OnShowHtml()
+    {
+        RenderFragment message =@<text>Info Toast with <strong>bold</strong> text</text>;
+        ToastService.ShowToast(ToastLevel.Warning, message);
     }
 }
