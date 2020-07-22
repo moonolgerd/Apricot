@@ -2,6 +2,7 @@
 @using Apricot.Services
 @inject IApricotService ApricotService
 @inject IToastService ToastService
+@inject Blazor.Notifications.NotificationService NotificationService
 
 <div class="alert alert-primary mt-4" role="alert">
     <span class="oi oi-arrow-top mr-2" aria-hidden="true"></span>
@@ -60,9 +61,11 @@
         Latest = DateTime.Now;
     }
 
-    private void OnShowHtml()
+    private async Task OnShowHtml()
     {
         RenderFragment message =@<text>Info Toast with <strong>bold</strong> text</text>;
         ToastService.ShowToast(ToastLevel.Warning, message);
+
+        await NotificationService.CreateAsync("Hello from Blazor Notifier");
     }
 }
