@@ -7,6 +7,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Apricot.Services;
 using System.Net.Http;
 using Blazored.Toast;
+using Blazor.Notifications;
 
 namespace Apricot
 {
@@ -21,6 +22,7 @@ namespace Apricot
 
             builder.Services.AddSingleton<IApricotService, ApricotService>();
             builder.Services.AddBlazoredToast();
+            builder.Services.AddNotifications();
 
             await builder.Build().RunAsync();
         }
