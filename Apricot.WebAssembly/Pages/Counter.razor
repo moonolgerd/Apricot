@@ -13,4 +13,14 @@
     {
       currentCount += 5;
     }
+
+    protected override async Task OnInitializedAsync()
+    {
+        await Task.Delay(1000); 
+        currentCount = 10;
+        StateHasChanged();
+        await Task.Delay(1000); 
+        currentCount = 20;
+        StateHasChanged();
+    }
 }
