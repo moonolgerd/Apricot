@@ -1,4 +1,4 @@
-﻿@inherits DisposableComponent
+﻿@implements IDisposable
 
 <div class="top-row pl-4 navbar navbar-dark">
     <a class="navbar-brand" href="">Apricot</a>
@@ -39,9 +39,8 @@
       //stream = new System.IO.FileStream("temp", System.IO.FileMode.Open);
     }
 
-    protected override void Dispose(bool disposing)
+    void IDisposable.Dispose()
     {
-      //stream.Dispose();
-      base.Dispose(disposing);
+    // Code here
     }
 }
