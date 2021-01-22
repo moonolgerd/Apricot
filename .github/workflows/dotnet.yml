@@ -22,7 +22,7 @@ jobs:
     - name: Build
       run: dotnet build --no-restore
     - name: Publish
-      run: dotnet publish Apricot/Apricot.WebAssembly/Apricot.csproj -c Release
+      run: dotnet publish Apricot.WebAssembly/Apricot.csproj -c Release
     - name: GitHub Pages
       uses: moonolgerd/Apricot@v1.0.0
       with:
