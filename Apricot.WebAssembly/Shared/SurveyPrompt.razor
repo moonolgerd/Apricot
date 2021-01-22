@@ -50,6 +50,18 @@
         if (!firstRender)
             return;
         Apricots = await ApricotService.GetApricots();
+
+        foreach (var apricot in Apricots)
+        {
+            var foo = apricot switch 
+            {
+                { Name: "Orange Apricot" } => "Orange",
+                Apricot.Data.Apricot a when a.Name.Contains("Red") => "Wrong",
+                _ => "Regular"
+            };
+            Console.WriteLine(foo);
+        }
+
         timer = new Timer(2000);
         timer.Elapsed += Elapsed;
         timer.Start();
