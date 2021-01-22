@@ -13,8 +13,7 @@ namespace Apricot.Data
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddGrpc();
-            services.AddGrpcWeb(o => o.GrpcWebEnabled = true);
-
+            
             services.AddCors(o => o.AddPolicy("AllowAll", builder =>
             {
                 builder.AllowAnyOrigin()
