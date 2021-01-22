@@ -28,4 +28,5 @@ jobs:
       with:
         # Build directory to deploy
         build_dir: Apricot.WebAssembly/bin/Release/net5.0/publish/wwwroot
-        GITHUB_TOKEN: ${{ secrets.PUBLISH_TOKEN }}
+      env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
