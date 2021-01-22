@@ -23,3 +23,8 @@ jobs:
       run: dotnet build --no-restore
     - name: Publish
       run: dotnet publish Apricot/Apricot.WebAssembly/Apricot.csproj -c Release
+    - name: GitHub Pages
+      uses: moonolgerd/ghaction-github-pages@v2.2.0
+      with:
+        # Build directory to deploy
+        build_dir: bin/Release/net5.0/publish/wwwroot
