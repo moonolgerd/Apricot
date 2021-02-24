@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Apricot", "Apricot.WebAssem
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Apricot.Data", "Apricot.Data\Apricot.Data.csproj", "{FF1F7B6C-F342-4630-8F81-29E36A1638A4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Apricot.Shared", "Apricot.Shared\Apricot.Shared.csproj", "{3B565DE2-E13A-4F7B-B1EE-2B06B3113E88}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{FF1F7B6C-F342-4630-8F81-29E36A1638A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FF1F7B6C-F342-4630-8F81-29E36A1638A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FF1F7B6C-F342-4630-8F81-29E36A1638A4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3B565DE2-E13A-4F7B-B1EE-2B06B3113E88}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3B565DE2-E13A-4F7B-B1EE-2B06B3113E88}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3B565DE2-E13A-4F7B-B1EE-2B06B3113E88}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3B565DE2-E13A-4F7B-B1EE-2B06B3113E88}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

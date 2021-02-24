@@ -5,12 +5,12 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<Protobuf Include="Protos\apricots.proto" GrpcServices="Server" />
+		<PackageReference Include="Grpc.AspNetCore" Version="2.34.0" />
+		<PackageReference Include="Grpc.AspNetCore.Web" Version="2.34.0" />
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Grpc.AspNetCore" Version="2.34.0" />
-		<PackageReference Include="Grpc.AspNetCore.Web" Version="2.34.0" />
+	  <ProjectReference Include="..\Apricot.Shared\Apricot.Shared.csproj" />
 	</ItemGroup>
 
 </Project>

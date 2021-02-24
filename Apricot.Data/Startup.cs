@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
@@ -32,16 +31,13 @@ namespace Apricot.Data
             }
 
             app.UseRouting();
-            app.UseGrpcWeb();
+
+            app.UseGrpcWeb(new GrpcWebOptions { DefaultEnabled = true });
             app.UseCors();
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapGrpcService<Services.ApricotService>()
-                    .EnableGrpcWeb()
-                    .RequireCors("AllowAll");
-
-                endpoints.MapGet("/", async context => await context.Response.WriteAsync("Communication with gRPC endpoints must be made through a gRPC client. To learn how to create a client, visit: https://go.microsoft.com/fwlink/?linkid=2086909"));
+                endpoints.MapGrpcService<Services.ApricotService>().RequireCors("AllowAll");
             });
         }
     }
