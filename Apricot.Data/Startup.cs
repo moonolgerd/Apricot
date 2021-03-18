@@ -1,7 +1,9 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.ResponseCompression;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using System.Linq;
 
 namespace Apricot.Data
 {
@@ -12,7 +14,13 @@ namespace Apricot.Data
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddGrpc();
-            
+
+            services.AddResponseCompression(opts =>
+            {
+                opts.MimeTypes = ResponseCompressionDefaults.MimeTypes.Concat(
+                    new[] { "application/octet-stream" });
+            });
+
             services.AddCors(o => o.AddPolicy("AllowAll", builder =>
             {
                 builder.AllowAnyOrigin()
@@ -25,10 +33,16 @@ namespace Apricot.Data
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            app.UseResponseCompression();
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseWebAssemblyDebugging();
             }
+
+            app.UseStaticFiles();
+            app.UseBlazorFrameworkFiles();
 
             app.UseRouting();
 
@@ -38,6 +52,7 @@ namespace Apricot.Data
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapGrpcService<Services.ApricotService>().RequireCors("AllowAll");
+                endpoints.MapFallbackToFile("index.html");
             });
         }
     }

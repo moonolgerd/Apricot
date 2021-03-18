@@ -5,12 +5,14 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="5.0.4" />
 		<PackageReference Include="Grpc.AspNetCore" Version="2.34.0" />
 		<PackageReference Include="Grpc.AspNetCore.Web" Version="2.34.0" />
 	</ItemGroup>
 
 	<ItemGroup>
 	  <ProjectReference Include="..\Apricot.Shared\Apricot.Shared.csproj" />
+	  <ProjectReference Include="..\Apricot.WebAssembly\Apricot.csproj" />
 	</ItemGroup>
 
 </Project>

@@ -1,13 +1,14 @@
 using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
-using System.Text;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.DependencyInjection;
-using Apricot.Services;
 using System.Net.Http;
 using Blazored.Toast;
 using Blazor.Notifications;
+using static Apricot.Data.ApricotService;
+using Grpc.Net.Client;
+using Grpc.Net.Client.Web;
+using Microsoft.AspNetCore.Components;
 
 namespace Apricot
 {
@@ -18,9 +19,14 @@ namespace Apricot
             var builder = WebAssemblyHostBuilder.CreateDefault(args);
             builder.RootComponents.Add<App>("app");
 
-            builder.Services.AddTransient(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
+            builder.Services.AddSingleton(services =>
+            {
+                var httpClient = new HttpClient(new GrpcWebHandler(GrpcWebMode.GrpcWeb, new HttpClientHandler()));
+                var baseUri = services.GetRequiredService<NavigationManager>().BaseUri;
+                var channel = GrpcChannel.ForAddress(baseUri, new GrpcChannelOptions { HttpClient = httpClient });
+                return new ApricotServiceClient(channel);
+            });
 
-            builder.Services.AddSingleton<IApricotService, ApricotService>();
             builder.Services.AddBlazoredToast();
             builder.Services.AddNotifications();
 
